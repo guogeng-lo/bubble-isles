@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>泡泡漂流島</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <main class="sea" id="sea">
+    <div class="world" id="world"></div>
+    <div class="map" id="map">
+      <svg class="routes" id="routes" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <div id="islands"></div>
+      <div class="avatar" id="avatar" aria-hidden="true"></div>
+    </div>
+  </main>
+
+  <header class="topbar control-console">
+    <div class="brand"><span class="logo" aria-hidden="true"></span><span class="brand-text"><small>漂流紀錄 / W7</small><b id="world-name"></b><small id="world-sub"></small></span></div>
+    <div class="progress"><span>設計旅程</span><span class="bar"><i id="progress-bar"></i></span><b id="progress-num">0 / 5</b></div>
+  </header>
+  <aside class="utility">
+    <nav class="tools"><button class="tool" id="btn-report" title="我的課堂報告"><span class="tool-art" data-icon="report" aria-hidden="true"></span><span>報告</span></button><button class="tool" id="btn-key" title="Gemini金鑰"><span class="tool-art" data-icon="key" aria-hidden="true"></span><span>金鑰</span></button><button class="tool" id="btn-settings" title="設定"><span class="tool-art" data-icon="settings" aria-hidden="true"></span><span>選單</span></button></nav>
+    <div class="seg" id="mood" role="group" aria-label="天色"><button data-mood="dawn">晨光</button><button data-mood="fog">海霧</button><button data-mood="night">夜海</button></div>
+    <div class="me chip" id="me-badge" hidden><span class="mini-fig" id="me-avatar"></span><span class="me-text"><b id="me-name"></b><small id="me-level"></small></span></div>
+  </aside>
+  <aside class="hud-left">
+    <details class="mission" id="mission" hidden><summary id="mission-title" class="mission-title"></summary><div class="mission-line" id="mission-line"></div></details>
+  </aside>
+  <div class="hint" id="hint">方向鍵 / WASD走路　·　拖曳旋轉　·　走近守門人開始</div>
+  <nav class="bottombar" id="bottombar">
+    <button class="pill" id="btn-overview"><span data-icon="overview" aria-hidden="true"></span>全景</button>
+    <button class="pill" id="btn-follow"><span data-icon="follow" aria-hidden="true"></span>跟隨角色</button>
+    <button class="pill" id="btn-bag"><span data-icon="bag" aria-hidden="true"></span>背包<span class="count" id="bag-count">0</span></button>
+  </nav>
+
+  <section class="panel notebook" id="panel" aria-live="polite" hidden>
+    <div class="notebook-title">設計紀錄夾</div><button class="panel-close" id="panel-close" aria-label="收起設計紀錄夾">收起 −</button>
+    <div class="panel-body" id="panel-body"></div>
+  </section>
+
+  <div class="modal-back" id="modal-back" hidden>
+    <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+</div>
+
+<section id="print-area" aria-hidden="true"></section>
+
+<script src="js/vendor/three.min.js"></script>
+<script src="js/content.js"></script>
+<script src="js/art.js"></script>
+<script src="js/world3d.js"></script>
+<script src="js/ai.js"></script>
+<script>
+document.querySelectorAll("[data-icon]").forEach(function (el) { el.innerHTML = window.IsleArt.icon(el.dataset.icon); });
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>
